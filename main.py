@@ -1,10 +1,13 @@
 import pygame
 from constants import *
+from player import Player
 
 def main():
     pygame.init()
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     pygame.display.set_caption("Asteroids")
 
     # Initialize clock and delta time
@@ -16,11 +19,11 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        screen.fill("black")
-        pygame.display.flip()
+        screen.fill("black")        # Clear screen
+        player.draw(screen)         # Draw player triangle
+        pygame.display.flip()       # Update screen
+        dt = clock.tick(60) / 1000  # Frame limiter
 
-        # Cap frame rate to 60 FPS and calculate delta time
-        dt = clock.tick(60) / 1000  # dt is in seconds
 
 if __name__ == "__main__":
     print("Starting Asteroids!")
