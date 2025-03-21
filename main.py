@@ -21,7 +21,7 @@ def main():
     Asteroid.containers = asteroids, updatables, drawables
     AsteroidField.containers = updatables  # only updatable
     Shot.containers = (shots, updatables, drawables)
-    
+
     # Create player and asteroid field
     asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
@@ -39,6 +39,14 @@ def main():
                 return
 
         updatables.update(dt)
+        # Collision: bullet hits asteroid
+        for asteroid in asteroids:
+            for bullet in shots:
+                if bullet.collides_with(asteroid):
+                    bullet.kill()
+                    asteroid.kill()
+
+
         # Collision detection
         for asteroid in asteroids:
             if player.collides_with(asteroid):
