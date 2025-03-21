@@ -1,6 +1,7 @@
 import pygame
 from circleshape import CircleShape
 from constants import PLAYER_RADIUS, PLAYER_TURN_SPEED, PLAYER_SPEED
+CircleShape.containers = []
 
 class Player(CircleShape):
     def __init__(self, x, y):
