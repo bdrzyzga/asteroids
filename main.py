@@ -23,6 +23,7 @@ def main():
         player.draw(screen)         # Draw player triangle
         pygame.display.flip()       # Update screen
         dt = clock.tick(60) / 1000  # Frame limiter
+        player.update(dt)           # Update player
 
 
 if __name__ == "__main__":
